@@ -1,0 +1,14 @@
+{
+  "HepsiBurada": {
+    "urlKey": "https://www.hepsiburada.com/",
+    "elementTimeOut": 10,
+    "elements": {
+      "searchBox": "//*[@id=\"SearchBoxOld\"]/div/div/div[1]/div[2]/input",
+      "searchButton": "//*[@id=\"SearchBoxOld\"]/div/div/div[2]",
+      "aProduct": "#i0",
+      "productReviewsTab": "#productReviewsTab",
+      "productReviewRating": "//*[@id=\"hermes-voltran-comments\"]/div[4]/div[3]/div/div[1]/div[2]/div[4]/div[1]/div/div[1]/div[1]",
+      "productReviewRatingText": "//*[@id=\"hermes-voltran-comments\"]/div[4]/div[3]/div/div[1]/div[2]/div[4]/div[2]/span"
+    }
+  }
+}

@@ -1,0 +1,58 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+}
+
+plugins {
+    id "com.commercehub.cucumber-jvm" version "0.11"
+}
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+
+project.ext {
+    cucumberVersion = '4.7.2'
+}
+
+dependencies {
+    testImplementation 'io.cucumber:cucumber-java:' + cucumberVersion
+    testImplementation 'io.cucumber:cucumber-junit:' + cucumberVersion
+    testImplementation 'io.cucumber:cucumber-testng:' + cucumberVersion
+    compile 'org.seleniumhq.selenium:selenium-java:3.14.0'
+    compile 'com.googlecode.json-simple:json-simple:1.1.1'
+    testCompile("io.github.bonigarcia:webdrivermanager:3.7.1")
+    testCompile group: 'org.hamcrest', name: 'hamcrest-all', version: '1.3'
+    compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.24'
+
+}
+
+repositories {
+    mavenCentral()
+}
+
+test {
+    useJUnit()
+}
+
+test{
+    useTestNG()
+}
+
+configurations {
+    cucumberRuntime {
+        extendsFrom testImplementation
+    }
+}
+
+task cucumber() {
+    dependsOn assemble, testClasses
+    doLast {
+        javaexec {
+            main = "io.cucumber.core.cli.Main"
+            classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
+            args = ['--plugin', 'pretty', '--glue', 'gradle.cucumber', 'src/test/resources']
+        }
+    }
+}
