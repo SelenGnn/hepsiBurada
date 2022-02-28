@@ -21,3 +21,4 @@ Tests will run on Chrome. You can run the tests on different browsers by adding 
 ## Dependencies
 * *[selenium](https://www.selenium.dev/)*
 * *[webdrivermanager](https://github.com/bonigarcia/webdrivermanager)*
+* * *[cucumber](https://cucumber.io/)*
